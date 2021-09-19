@@ -1,6 +1,7 @@
 import unittest
 
 import requests as requests
+
 from selenium import webdriver
 
 
@@ -12,7 +13,8 @@ class LogInTest(unittest.TestCase):
         browser = webdriver.Chrome(executable_path='browser/chromedriver.exe')
         browser.get('http://hrm-online.portnov.com/symfony/web/index.php/auth/login')
         browser.find_element_by_xpath('//*[@id="txtUsername"]').send_keys('admin')
-
+        browser.find_element_by_id('txtPassword').send_keys('password')
+        browser.find_element_by_css_selector('#btnLogin').click()
         self.assertEqual(True, False)
 
 if __name__ == '__main__':
